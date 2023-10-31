@@ -11037,8 +11037,8 @@ spec:
   project: default
   source:
     path: argocd
-    repoURL: https://github.com/fabito/htk8s.git
-    targetRevision: master
+    repoURL: https://github.com/ericgoedtel/htk8s.git
+    targetRevision: main
   syncPolicy:
     automated:
       prune: false
@@ -11055,8 +11055,8 @@ spec:
   project: default
   source:
     path: overlays/x86
-    repoURL: https://github.com/fabito/htk8s.git
-    targetRevision: master
+    repoURL: https://github.com/ericgoedtel/htk8s.git
+    targetRevision: main
   syncPolicy:
     automated:
       prune: false

@@ -1,4 +1,4 @@
-![test](https://github.com/fabito/htk8s/workflows/test/badge.svg)
+![test](https://github.com/ericgoedtel/htk8s/workflows/test/badge.svg)
 
 # HTPC powered by k3s
 
@@ -22,10 +22,10 @@ Applications state (settings / db) and media files are stored in a shared volume
 
 ```bash
 # for x86_64
-kubectl apply -f https://raw.githubusercontent.com/fabito/htk8s/v0.1/install_x86_64.yaml
+kubectl apply -f https://raw.githubusercontent.com/ericgoedtel/htk8s/v0.1/install_x86_64.yaml
 
 # for raspberry pi (ARM)
-kubectl apply -f https://raw.githubusercontent.com/fabito/htk8s/v0.1/install_armhf.yaml
+kubectl apply -f https://raw.githubusercontent.com/ericgoedtel/htk8s/v0.1/install_armhf.yaml
 ```
 
 ### The Gitops way
@@ -35,7 +35,7 @@ kubectl apply -f https://raw.githubusercontent.com/fabito/htk8s/v0.1/install_arm
 
 ```bash
 # x86_64 only
-kubectl apply -f https://raw.githubusercontent.com/fabito/htk8s/v0.1/install_argocd.yaml
+kubectl apply -f https://raw.githubusercontent.com/ericgoedtel/htk8s/v0.1/install_argocd.yaml
 ```
 
 This alternate manifest will install [Argo CD](https://github.com/argoproj/argo-cd) along with the [htpc application](argocd/application.yaml). Then it will monitor this repo for changes and apply them to the cluster accordingly (more specifically the `overlays/x86`overlay).
