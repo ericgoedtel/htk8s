@@ -13,7 +13,7 @@ resources:
 - sonarr
 - bazarr
 - transmission
-- emby
+- plex
 - ingress-route.yaml
 
 patchesStrategicMerge:

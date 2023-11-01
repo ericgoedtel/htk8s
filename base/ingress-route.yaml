@@ -8,13 +8,14 @@ spec:
   routes:
   - kind: Rule
     match: PathPrefix(`/`)
-    middlewares: []
+    middlewares:
+      - name: plex-path-rewrite
     priority: 0
     services:
     - kind: Service
-      name: emby
+      name: plex
       namespace: "htpc"
-      port: 8096
+      port: 32400
   - kind: Rule
     match: PathPrefix(`/jackett`)
     middlewares: []
@@ -60,3 +61,27 @@ spec:
       name: transmission
       namespace: "htpc"
       port: 9091
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: plex-tls-passthrough
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: HostSNIRegexp(`foo.plex.direct`,`{address:[0-9]+.[0-9]+.[0-9]+.[0-9]+}.{hash:[a-f0-9]+}.plex.direct`)
+      services:
+        - name: plex
+          port: 32400
+  tls:
+    passthrough: true
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: plex-path-rewrite
+spec:
+  redirectRegex:
+    regex: "^/$"
+    replacement: "/manage"
