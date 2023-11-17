@@ -7,7 +7,7 @@ spec:
   
   source:
     repoURL: https://github.com/ericgoedtel/htk8s.git
-    targetRevision: tls-passthrough-plex
+    targetRevision: main
     path: overlays/x86
 
   destination:
